@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Predictor</title>
+
+    <!-- ✅ Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            margin-top: 60px;
+            background: white;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        label {
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            width: 100%;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container font-weight-bold">
+        <h1>Welcome to Car Price Predictor</h1>
+        <p>This app predicts the price of a car you want to sell. Try filling the details below:</p>
+
+        <form id="predictForm" action="/predict" method="post">
+            <label for="company">Select the company:</label>
+            <select class="form-select" id="company" name="company" required>
+                <option selected disabled>Select Company</option>
+                <option>Maruti</option>
+                <option>Hyundai</option>
+                <option>Audi</option>
+                <option>Honda</option>
+                <option>BMW</option>
+                <option>Mercedes-Benz</option>
+                <option>Chevrolet</option>
+                <option>Toyota</option>
+                <option>Nissan</option>
+                <option>Tata</option>
+                <option>Skoda</option>
+                <option>Mahindra</option>
+                <option>Ford</option>
+                <option>Renault</option>
+                <option>Fiat</option>
+                <option>Datsun</option>
+                <option>Volkswagen</option>
+            </select>
+
+            <label for="model">Select the model:</label>
+            <input type="text" class="form-control" id="model" name="model" placeholder="e.g., Swift VXI" required>
+
+            <label for="year">Select Year of Purchase:</label>
+            <select class="form-select" id="year" name="year" required>
+                {% for y in range(2000, 2025) %}
+                <option value="{{ y }}">{{ y }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="fuel">Select the Fuel Type:</label>
+            <select class="form-select" id="fuel" name="fuel" required>
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>CNG</option>
+                <option>LPG</option>
+                <option>Electric</option>
+            </select>
+
+            <label for="km_driven">Enter the Number of Kilometers that the car has travelled:</label>
+            <input type="number" class="form-control" id="km_driven" name="km_driven" required>
+
+            <button type="submit" class="btn btn-primary">Predict Price</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Prediction Result</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body {% if 'Error' in prediction_text %}text-danger{% else %}text-success{% endif %}">
+                    {{ prediction_text|safe }}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Show modal if prediction exists -->
+    {% if prediction_text %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
+        });
+    </script>
+    {% endif %}
+</body>
+
+</html>
