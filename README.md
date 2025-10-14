@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square)](https://www.python.org/) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live-Deployment-brightgreen?style=flat-square)](https://yourusername.pythonanywhere.com)
+[![Live Demo](https://img.shields.io/badge/Live-Deployment-brightgreen?style=flat-square)](https://rakibislam22.pythonanywhere.com)
 
 A web-based **Car Price Predictor** built using **Flask**, which estimates the resale price of a car based on user inputs. The prediction is done using a **machine learning model** and displayed in **Bangladeshi Taka (BDT)** with results shown in a **Bootstrap modal popup**.  
 
@@ -17,8 +17,10 @@ Try the app online here: [Car Price Predictor Live](https://rakibislam22.pythona
 
 ## **Demo Screenshot**
 
-![Car Price Predictor](https://github.com/Rakibislam22/Car-Price-Predictor-Model/tree/main/screenshoots/home.png)  
-![Car Price Predictor](https://github.com/Rakibislam22/Car-Price-Predictor-Model/tree/main/screenshoots/image.png)  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Rakibislam22/Car-Price-Predictor-Model/main/screenshoots/home.png" width="350" />
+  <img src="https://raw.githubusercontent.com/Rakibislam22/Car-Price-Predictor-Model/main/screenshoots/image.png" width="350" />
+</p>
 *Example of the prediction modal showing estimated price.*
 
 ---
